@@ -21,7 +21,7 @@ const Tetris = () => {
   console.log('re-render');
 
   const movePlayer = dir => {
-
+    updatePlayerPost({ x: dir, y: 0 });
   };
 
   const keyUp = ({ keyCode }) => {
@@ -29,11 +29,13 @@ const Tetris = () => {
   };
 
   const startGame = () => {
-
+    // Reset everything
+    setStage(createStage());
+    resetPlayer();
   };
 
   const drop = () => {
-
+    updatePlayerPost({ x: 0, y: 1, collided: false })
   };
 
   const dropPlayer = () => {
@@ -41,7 +43,17 @@ const Tetris = () => {
   };
 
   const move = ({ keyCode }) => {
-
+    if (!gameOver) {
+      if (keyCode === 37) {
+        movePlayer(-1);
+      } else if (keyCode === 39) {
+        movePlayer(1);
+      } else if (keyCode === 40) {
+        dropPlayer();
+      } else if (keyCode === 38) {
+        playerRotate(stage, 1);
+      }
+    }
   };
 
   return (
