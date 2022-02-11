@@ -20,8 +20,32 @@ const Tetris = () => {
 
   console.log('re-render');
 
+  const movePlayer = dir => {
+
+  };
+
+  const keyUp = ({ keyCode }) => {
+
+  };
+
+  const startGame = () => {
+
+  };
+
+  const drop = () => {
+
+  };
+
+  const dropPlayer = () => {
+
+  };
+
+  const move = ({ keyCode }) => {
+
+  };
+
   return (
-    <styledTetrisWrapper>
+    <styledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
       <StyledTetris>
         <Stage stage={stage} />
         <aside>
