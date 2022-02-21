@@ -15,7 +15,7 @@ const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
-  const [player] = usePlayer();
+  const [player, updatePlayerPost, resetPlayer] = usePlayer();
   const [stage, setStage] = useStage(player);
 
   console.log('re-render');
