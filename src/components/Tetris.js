@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { createStage } from '../gameHelpers';
+import { createStage, checkCollision } from '../gameHelpers';
 import { styledTetrisWrapper, StyledTetris } from './styles/StyledTetris';
 
 import { usePlayer } from '../hooks/usePlayer';
@@ -21,7 +21,9 @@ const Tetris = () => {
   console.log('re-render');
 
   const movePlayer = dir => {
-    updatePlayerPost({ x: dir, y: 0 });
+    if (!checkCollision(player, stage, { x: dir, y: 0})) {
+      updatePlayerPos({ x: dir, y: 0 });
+    }
   };
 
   const keyUp = ({ keyCode }) => {
@@ -32,10 +34,20 @@ const Tetris = () => {
     // Reset everything
     setStage(createStage());
     resetPlayer();
+    setGameOver(false);
   };
 
   const drop = () => {
-    updatePlayerPost({ x: 0, y: 1, collided: false })
+    if (!checkCollision(player, stage, { x: 0, y: 1 })) {
+      updatePlayerPost({ x: 0, y: 1, collided: false })
+    } else {
+      if (player.pos.y {
+        console.log("GAME OVER!!!");
+        setGameOver(true);
+        setDropTime(null);
+      }
+      updatePlayerPost({ x: 0, y: 1, collided: false })
+    }
   };
 
   const dropPlayer = () => {
