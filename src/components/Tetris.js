@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { createStage, checkCollision } from '../gameHelpers';
 import { styledTetrisWrapper, StyledTetris } from './styles/StyledTetris';
 
+import { useInterval } from '../hooks/useInterval';
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 
