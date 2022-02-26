@@ -69,6 +69,10 @@ const Tetris = () => {
     }
   };
 
+  useInterval(() =>
+    drop();
+  ), dropTime)
+
   return (
     <styledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
       <StyledTetris>
